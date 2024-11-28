@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Votre Nom</title>
+  <style>
+    /* Styles globaux */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+    header, footer {
+      background: #1e1e1e;
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    header h1 {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 2.5rem;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      font-weight: 300;
+    }
+
+    nav {
+      background-color: rgba(52, 152, 219, 0.9);
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+    nav ul li {
+      margin: 0 20px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #2980b9;
+    }
+
+    /* Container */
+    .container {
+      padding: 2rem;
+    }
+
+    h2 {
+      color: #3498db;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    p {
+      line-height: 1.8;
+    }
+
+    /* Section des projets */
+    .projects {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 30px;
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .projects div {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+      width: 80%;
+      max-width: 800px;
+    }
+    .projects div:hover {
+      transform: translateY(-10px);
+    }
+    .projects img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px 10px 0 0;
+    }
+    .projects p {
+      padding: 15px;
+      font-size: 1.1rem;
+      color: #333;
+    }
+    .projects a {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #3498db;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      margin: 15px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    .projects a:hover {
+      background-color: #2980b9;
+    }
+
+    /* Section Contactez-moi */
+    .contact-section {
+      padding: 3rem;
+      background-color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+      margin: 3rem auto;
+      max-width: 900px;
+      text-align: center;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: #ecf0f1;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 15px 0;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+    .contact-item i {
+      font-size: 24px;
+      color: #3498db;
+      margin-right: 15px;
+    }
+    .contact-item a {
+      color: #333;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+    .contact-item a:hover {
+      color: #2980b9;
+    }
+
+    /* Section CV */
+    .cv-section {
+      text-align: center;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .cv-section a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 30px;
+      background-color: #3498db;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease;
+    }
+    .cv-section a:hover {
+      background-color: #2980b9;
+    }
+
+    /* Section À propos de moi */
+    .about-section {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 2rem;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .about-text {
+      flex: 1;
+      max-width: 60%;
+    }
+
+    .about-photo {
+      flex: 1;
+      max-width: 35%;
+      text-align: center;
+    }
+
+    .about-photo img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease-out;
+    }
+     /* Section Contactez-moi */
+     .contact-section {
+      margin: 2rem auto;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 900px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 15px 0;
+    }
+    .contact-item a {
+      color: #3498db;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+    .contact-item a:hover {
+      color: #2980b9;
+    }
+
+    /* Formulaire */
+    .contact-form {
+      margin-top: 2rem;
+    }
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .contact-form button {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .contact-form button:hover {
+      background-color: #2980b9;
+    }
+
+    /* Media Queries pour responsivité */
+    @media (max-width: 768px) {
+      .about-section {
+        flex-direction: column;
+        text-align: center;
+      }
+      .about-text, .about-photo {
+        max-width: 100%;
+      }
+      nav ul {
+        flex-direction: column;
+        padding: 0;
+      }
+      nav ul li {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bienvenue sur mon portfolio</h1>
+    <p>Découvrez mes réalisations et projets.</p>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#projects">Projets</a></li>
+      <li><a href="#experience">Expériences</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="container about-section">
+    <div class="about-content">
+      <div class="about-text">
+        <h2>À propos de moi</h2>
+        <p>Actuellement étudiant en 1ère année de BTS Services Informatiques aux Organisations (SIO), au Lycée Algoud Laffemas à Valence. Passionné par l’informatique, je cherche à appliquer mes connaissances dans un stage en conception et développement de sites web, ainsi que dans la maintenance et sécurisation de réseaux.</p>
+      </div>
+      <div class="about-photo">
+        <img src="theophile.JPG" alt="Photo de Théophile Trapand" />
+      </div>
+    </div>
+  </section>
+
+  <section class="container projects">
+    <h2>Mes projets</h2>
+    <div>
+      <img src="e-pannel.JPG" alt="Projet 1">
+      <p>Il s’agit de réaliser un panneau de direction numérique et rotatif, piloté à partir d’une IHM et d’une base de données.</p>
+      <a href="miniprojet-epannel-2024-main.zip" download="projet1.zip">Télécharger le projet</a>
+    </div>
+  </section>
+
+  
+
+  <section class="experience-section">
+    <h2>Expériences professionnelles</h2>
+    <div class="experience">
+      <h3>Avant le Bac</h3>
+      <p>Stage technicien informatique polyvalent mars mai  2023 </p>
+      <p>Sud telecom - Avignon - Nime</p>
+      <p>Stage technicien de maintenance informatique mai-juin 2021</p>
+    </div>
+    <div class="experience">
+      <h3>Après le Bac</h3>
+      <p>stage administrateur réseau  mai-Juin  2024</p>
+      <p>Wawe island - Monteux</p>
+      <a href="BTS CIEL rapport de stage.pdf" download="rapport de stage">Télécharger rapport de stage</a>
+    </div>
+    <a href="cv pro Theophile.pdf" download="CV_Trapand_Theophile_Animateur.pdf">Télécharger mon CV profesionnel</a>
+    <div class="experience">
+      <h3>Expériences en Animation</h3>
+      <p>- Animateur dans un centre de loisirs</p>
+      <p>2023 - 2 mois, animateur des 3-5 ans en ACM à Pont-Saint-Esprit</p>
+      <p>2024 - 1 semaine, animateur des 3-5 ans en ACM à Annecy</p>
+      <p>2024 - 2 semaines, animateur des 3-5 ans en ACM à Annecy</p>
+      <p>Voici mon CV d'animateur</p>
+      <a href="Coloré Enfantin Nature Petite Enfance CV.pdf" download="CV_Trapand_Theophile_Animateur.pdf">Télécharger mon CV d'animateur</a>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <h2>Contactez-moi</h2>
+    <div class="contact-item">
+      <i class="fas fa-phone-alt"></i>
+      <a href="tel:07 82 76 79 29">07 82 76 79 29</a>
+    </div>
+    <div class="contact-item">
+      <i class="fab fa-facebook"></i>
+      <a href="https://www.facebook.com/profile.php?id=100095191976158" target="_blank">Suivez-moi sur Facebook</a>
+    </div>
+    <div class="contact-item">
+      <i class="fab fa-linkedin"></i>
+      <a href="https://www.linkedin.com/in/théophile-trapand-1b542a293/" target="_blank">Suivez-moi sur LinkedIn</a>
+    </div>
+    <div class="contact-form">
+      <form action="send-mail.php" method="POST">
+        <input type="text" name="name" placeholder="Votre nom" required>
+        <input type="email" name="email" placeholder="Votre email" required>
+        <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </section>
+     
